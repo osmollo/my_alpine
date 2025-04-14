@@ -2,7 +2,13 @@
 
 ## 1.1
 
-- Imagen base: alpine 3.21
+- Imagen base: python:3.13-alpine3.21
+- Ejecución de contenedor como usuario sin privilegios
+- Software instalado:
+  - bat
+  - ripgrep
+  - curlie
+  - AstroNvim
 
 ## 1.0
 
