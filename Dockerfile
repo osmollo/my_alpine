@@ -1,16 +1,36 @@
-FROM alpine:3.18.4
+FROM alpine:3.23
 
 LABEL maintainer="osmollo@proton.me"
 
 RUN apk add --no-cache --virtual build-deps tzdata && \
-    apk add --no-cachea --update bash zsh git ansible neovim starship jq less curl wget py3-pip py3-virtualenv ipython && \
+    apk add --update --no-cache \
+        curl \
+        bat \
+        zsh \
+        neovim \
+        ripgrep \
+        fd \
+        lsd \
+        yazi \
+        fish \
+        starship \
+        git \
+        jq \
+        less \
+        py3-pip \
+        py3-virtualenv \
+        ipython \
+        sd && \
     cp /usr/share/zoneinfo/Europe/Madrid /etc/localtime && \
-    apk del build-deps
+    apk del build-deps && \
+    rm -rf /var/cache/apk && \
+    set -eux; \
+    mkdir -p /root/.config/fish && \
+    echo 'starship init fish | source' > /root/.config/fish/config.fish && \
+    echo "alias ls='lsd'" >> /root/.config/fish/config.fish && \
+    echo "alias cat='bat -p'" >> /root/.config/fish/config.fish && \
+    echo "alias find='fd'" >> /root/.config/fish/config.fish
 
-#COPY install.sh /tmp
-
-#RUN chmod +x /tmp/install.sh && \
-#    /tmp/install.sh && \
-#    rm -f /tmp/install.sh
+    ENV SHELL=/usr/bin/fish
 
 ENTRYPOINT [ "/bin/zsh" ]

@@ -6,8 +6,7 @@
 - Software instalado:
     - Neovim
     - Git
-    - Ansible
-    - Bash/Zsh
+    - Zsh/Fish
     - Starship
     - Oh-my-zsh
     - Curl/Wget
