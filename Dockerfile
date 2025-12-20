@@ -24,8 +24,9 @@ RUN apk add --no-cache --virtual build-deps tzdata && \
     cp /usr/share/zoneinfo/Europe/Madrid /etc/localtime && \
     apk del build-deps && \
     rm -rf /var/cache/apk && \
-    set -eux; \
-    mkdir -p /root/.config/fish && \
+    set -eux
+
+RUN mkdir -p /root/.config/fish && \
     echo 'eval $(starship init fish)' > /root/.config/fish/config.fish && \
     echo "alias ls='lsd'" >> /root/.config/fish/config.fish && \
     echo "alias cat='bat -p'" >> /root/.config/fish/config.fish && \
