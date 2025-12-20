@@ -26,7 +26,7 @@ RUN apk add --no-cache --virtual build-deps tzdata && \
     rm -rf /var/cache/apk && \
     set -eux; \
     mkdir -p /root/.config/fish && \
-    echo 'starship init fish | source' > /root/.config/fish/config.fish && \
+    echo 'eval $(starship init fish)' > /root/.config/fish/config.fish && \
     echo "alias ls='lsd'" >> /root/.config/fish/config.fish && \
     echo "alias cat='bat -p'" >> /root/.config/fish/config.fish && \
     echo "alias find='fd'" >> /root/.config/fish/config.fish
