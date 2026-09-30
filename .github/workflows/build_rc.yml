@@ -39,3 +39,32 @@ jobs:
         docker push $docker_user/$docker_image:$docker_version
         docker tag $docker_user/$docker_image:$docker_version $docker_user/$docker_image:latest
         docker push $docker_user/$docker_image:latest
+
+    - name: Create GitHub release
+      env:
+        GH_TOKEN: ${{ github.token }}
+        docker_user: osmollo
+        docker_image: my_alpine
+        docker_version: ${{ github.sha }}
+      run: |
+        docker_version=${docker_version::7}
+        release_notes=$(cat <<EOF
+        ## Development image
+
+        Published Docker image: \`$docker_user/$docker_image:$docker_version\`
+
+        ## Changes
+
+        - Built from the merge commit on \`develop\`.
+        - Published to Docker Hub with the short commit SHA tag.
+        - Updated \`$docker_user/$docker_image:latest\` to this development build.
+
+        ## Traceability
+
+        - Commit: $GITHUB_SHA
+        EOF
+        )
+        gh release create "$docker_version" \
+          --target "$GITHUB_SHA" \
+          --title "Development build $docker_version" \
+          --notes "$release_notes"
