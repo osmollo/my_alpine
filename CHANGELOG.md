@@ -6,6 +6,7 @@
 - Zona horaria configurada como `Europe/Madrid` mediante `tzdata`.
 - Fish queda disponible con Starship y aliases para `ls`, `cat` y `find`.
 - Zsh se mantiene como shell de entrada.
+- Zsh carga una configuración de Starship específica que identifica visualmente el contenedor Docker.
 - Las PR fusionadas en `develop` publican una beta numerada según `release.json` y crean una pre-release en GitHub.
 - Las betas no actualizan el tag `latest`.
 - Solo una PR fusionada de `develop` a `main` publica una versión estable y actualiza el tag `latest`.

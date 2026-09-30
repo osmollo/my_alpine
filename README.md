@@ -10,7 +10,7 @@ Ejecuta la imagen de Docker Hub con una terminal interactiva:
 docker run --rm -it osmollo/my_alpine:latest
 ```
 
-Zsh es el shell de entrada. Fish sigue disponible con Starship y aliases para `ls`, `cat` y `find`. La imagen configura la zona horaria `Europe/Madrid`.
+Zsh es el shell de entrada. Starship muestra un distintivo `DOCKER`, el icono de Alpine, el directorio actual y el estado de Git. Fish sigue disponible con Starship y aliases para `ls`, `cat` y `find`. La imagen configura la zona horaria `Europe/Madrid`.
 
 ## Herramientas incluidas
 

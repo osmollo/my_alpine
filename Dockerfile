@@ -32,6 +32,13 @@ RUN mkdir -p /root/.config/fish && \
         "alias find='fd'" \
         > /root/.config/fish/config.fish
 
+COPY starship.toml /root/.config/starship.toml
+
+RUN printf '%s\n' \
+        'eval "$(starship init zsh)"' \
+        > /root/.zshrc
+
 ENV SHELL=/bin/zsh
+ENV STARSHIP_CONFIG=/root/.config/starship.toml
 
 ENTRYPOINT ["/bin/zsh"]
