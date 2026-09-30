@@ -1,9 +1,9 @@
-FROM alpine:3.23
+FROM alpine:3.24.2
 
 LABEL maintainer="osmollo@proton.me"
 
-RUN apk add --no-cache --virtual build-deps tzdata && \
-    apk add --update --no-cache \
+RUN apk add --no-cache \
+        tzdata \
         curl \
         bat \
         zsh \
@@ -22,16 +22,16 @@ RUN apk add --no-cache --virtual build-deps tzdata && \
         ipython \
         sd && \
     cp /usr/share/zoneinfo/Europe/Madrid /etc/localtime && \
-    apk del build-deps && \
-    rm -rf /var/cache/apk && \
-    set -eux
+    printf '%s\n' 'Europe/Madrid' > /etc/timezone
 
 RUN mkdir -p /root/.config/fish && \
-    echo 'eval $(starship init fish)' > /root/.config/fish/config.fish && \
-    echo "alias ls='lsd'" >> /root/.config/fish/config.fish && \
-    echo "alias cat='bat -p'" >> /root/.config/fish/config.fish && \
-    echo "alias find='fd'" >> /root/.config/fish/config.fish
+    printf '%s\n' \
+        'starship init fish | source' \
+        "alias ls='lsd'" \
+        "alias cat='bat -p'" \
+        "alias find='fd'" \
+        > /root/.config/fish/config.fish
 
-    ENV SHELL=/usr/bin/fish
+ENV SHELL=/usr/bin/fish
 
-ENTRYPOINT [ "/bin/zsh" ]
+ENTRYPOINT ["/usr/bin/fish"]
