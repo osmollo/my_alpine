@@ -6,8 +6,10 @@
 - Zona horaria configurada como `Europe/Madrid` mediante `tzdata`.
 - Fish queda disponible con Starship y aliases para `ls`, `cat` y `find`.
 - Zsh se mantiene como shell de entrada.
-- La imagen de desarrollo se publica en Docker Hub con el hash corto del commit como tag.
-- Se mantienen las imágenes con el tag `latest` en los flujos estable y de desarrollo.
+- Las PR fusionadas en `develop` publican una beta numerada según `release.json` y crean una pre-release en GitHub.
+- Las betas no actualizan el tag `latest`.
+- Solo una PR fusionada de `develop` a `main` publica una versión estable y actualiza el tag `latest`.
+- Se documenta el flujo de ramas `main`, `develop`, `feature/*` y `hotfix/*`.
 
 ## 1.0
 
