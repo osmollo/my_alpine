@@ -10,7 +10,7 @@ Ejecuta la imagen de Docker Hub con una terminal interactiva:
 docker run --rm -it osmollo/my_alpine:latest
 ```
 
-Fish es el shell de entrada. La imagen configura la zona horaria `Europe/Madrid` y activa Starship.
+Zsh es el shell de entrada. Fish sigue disponible con Starship y aliases para `ls`, `cat` y `find`. La imagen configura la zona horaria `Europe/Madrid`.
 
 ## Herramientas incluidas
 

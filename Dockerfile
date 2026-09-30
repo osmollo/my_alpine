@@ -32,6 +32,6 @@ RUN mkdir -p /root/.config/fish && \
         "alias find='fd'" \
         > /root/.config/fish/config.fish
 
-ENV SHELL=/usr/bin/fish
+ENV SHELL=/bin/zsh
 
-ENTRYPOINT ["/usr/bin/fish"]
+ENTRYPOINT ["/bin/zsh"]
