@@ -31,10 +31,12 @@ Al fusionar una PR de `develop` a `main`, GitHub Actions publica la versión est
 
 - `main`: versiones estables publicadas y único origen del tag `latest`.
 - `develop`: rama de integración para la siguiente beta.
-- `feature/<descripcion>`: cambios aislados que se integran mediante una PR hacia `develop`.
-- Las correcciones urgentes se preparan en una rama `hotfix/<descripcion>` y se integran mediante una PR hacia `develop`; después se promocionan de `develop` a `main`.
+- `feature/<descripcion>`: se crea desde `develop`, incrementa automáticamente la versión minor y se integra mediante una PR hacia `develop`.
+- `fix/<descripcion>`: se crea desde `develop`, incrementa automáticamente la versión patch y se integra mediante una PR hacia `develop`.
 
-Antes de abrir una PR, actualiza `README.md`, `CHANGELOG.md` y `release.json` cuando el cambio lo requiera.
+Al crear una rama `feature/*` o `fix/*`, GitHub Actions valida que parte de `develop` y actualiza `release.json` con el siguiente valor beta: `feature/*` incrementa minor y `fix/*` incrementa patch; ambos reinician el sufijo a `RC1`.
+
+Antes de abrir una PR, actualiza `README.md` y `CHANGELOG.md` cuando el cambio lo requiera.
 
 ## Versiones
 
